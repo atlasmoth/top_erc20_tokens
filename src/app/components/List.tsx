@@ -4,15 +4,20 @@ import { formatWallet } from "../misc";
 
 export default function List({
   holders,
-  tokenName,
+  token,
 }: {
   holders: Holder[];
-  tokenName: string;
+  token: string;
 }) {
   return (
     <main className="bg-[#1B1E28] min-h-screen text-[rgba(255,255,255,0.8)]">
       <div className="container mx-auto p-4">
-        <p className="font-semibold text-xl">Top 20 Holders of {tokenName}</p>
+        <a
+          className="font-semibold text-xl"
+          href={`https://base.blockscout.com/token/${token}`}
+        >
+          Top 20 Holders of <span className="underline">{token}</span>
+        </a>
         {holders.map((t, index) => (
           <div
             className="flex items-center my-4 justify-between"

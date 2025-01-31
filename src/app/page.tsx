@@ -8,10 +8,10 @@ export default async function Home({
   searchParams: Promise<{ token: string; tokenName: string }>;
 }) {
   try {
-    const { token, tokenName } = await searchParams;
+    const { token } = await searchParams;
     const holders = await fetchHoldersData(token);
 
-    return <List holders={holders} tokenName={tokenName} />;
+    return <List holders={holders} token={token} />;
   } catch (error) {
     console.log(error);
     return <ErrorScreen />;
