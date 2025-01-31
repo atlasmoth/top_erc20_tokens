@@ -1,5 +1,6 @@
 "use client";
-import { Holder } from "./Api";
+import { Holder } from "../api/Api";
+import { formatWallet } from "../misc";
 
 export default function List({
   holders,
@@ -17,11 +18,16 @@ export default function List({
             className="flex items-center my-4 justify-between"
             key={t.wallet_address}
           >
-            <div className="flex items-center">
+            <div className="flex items-center mr-2">
               <p className="mr-2 font-semibold">{index + 1}.</p>
-              <p>{t.wallet_address}</p>
+              <a
+                href={`https://base.blockscout.com/address/${t.wallet_address}`}
+                target="_blank"
+              >
+                {formatWallet(t.wallet_address)}
+              </a>
             </div>
-            <p>
+            <p className="flex-shrink-0">
               {Intl.NumberFormat("en-US", {
                 notation: "compact",
                 maximumFractionDigits: 1,

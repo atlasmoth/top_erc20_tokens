@@ -1,4 +1,4 @@
-import { fetchHoldersData } from "./components/action";
+import { fetchHoldersData } from "./actions/action";
 import ErrorScreen from "./components/ErrorScreen";
 import List from "./components/List";
 
