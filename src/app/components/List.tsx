@@ -15,6 +15,7 @@ export default function List({
         <a
           className="font-semibold text-xl"
           href={`https://base.blockscout.com/token/${token}`}
+          target="_blank"
         >
           Top 20 Holders of <span className="underline">{token}</span>
         </a>
