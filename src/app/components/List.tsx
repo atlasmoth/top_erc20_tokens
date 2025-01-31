@@ -38,7 +38,9 @@ export default function List({
             <p className="flex-shrink-0">
               {Intl.NumberFormat("en-US", {
                 notation: "compact",
-                maximumFractionDigits: 1,
+                maximumFractionDigits: 4,
+                roundingPriority: "morePrecision",
+                compactDisplay: "short",
               }).format(parseFloat(t.amount))}
             </p>
           </div>
