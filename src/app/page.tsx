@@ -3,7 +3,6 @@ import ErrorScreen from "./components/ErrorScreen";
 import List from "./components/List";
 
 export default async function Home() {
-  console.log();
   try {
     const holders = await fetchHoldersData();
 
