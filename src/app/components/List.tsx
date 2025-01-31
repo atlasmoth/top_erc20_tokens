@@ -23,6 +23,7 @@ export default function List({
               <a
                 href={`https://base.blockscout.com/address/${t.wallet_address}`}
                 target="_blank"
+                className="underline"
               >
                 {formatWallet(t.wallet_address)}
               </a>
