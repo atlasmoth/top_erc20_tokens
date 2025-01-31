@@ -15,7 +15,7 @@ export async function fetchTokens(
   tokenAddress: string,
   networkId: string = "8453"
 ) {
-  const response = await axios.get(
+  const response = await axios.get<TokenHolders>(
     `https://api.chainbase.online/v1/token/top-holders?chain_id=${networkId}&contract_address=${tokenAddress}&page=1&limit=20`,
     {
       headers: {
@@ -24,5 +24,7 @@ export async function fetchTokens(
       },
     }
   );
-  return response.data as Promise<TokenHolders>;
+  if (!Array.isArray(response.data.data))
+    throw new Error("Invalid data format");
+  return response.data;
 }
