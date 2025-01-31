@@ -17,7 +17,8 @@ export default function List({
           href={`https://base.blockscout.com/token/${token}`}
           target="_blank"
         >
-          Top 20 Holders of <span className="underline">{token}</span>
+          Top 20 Holders of{" "}
+          <span className="underline">{formatWallet(token)}</span>
         </a>
         {holders.map((t, index) => (
           <div
