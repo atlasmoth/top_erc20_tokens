@@ -1,13 +1,13 @@
 "use client";
-
-import { useState } from "react";
 import { Holder } from "./Api";
 
-export default function List({ holders }: { holders: Holder[] }) {
-  const [tokenName] = useState(() => {
-    return new URL(window.location.href).searchParams.get("tokenName") || "";
-  });
-
+export default function List({
+  holders,
+  tokenName,
+}: {
+  holders: Holder[];
+  tokenName: string;
+}) {
   return (
     <main className="bg-[#1B1E28] min-h-screen text-[rgba(255,255,255,0.8)]">
       <div className="container mx-auto p-4">

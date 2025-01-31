@@ -3,11 +3,7 @@
 import { fetchTokens } from "./Api";
 import { headers } from "next/headers";
 
-export async function fetchHoldersData() {
-  const headersList = await headers();
-  const referer = headersList.get("x-url") || headersList.get("referer") || "";
-  const url = new URL(referer);
-
-  const data = await fetchTokens(url.searchParams.get("token") || "");
+export async function fetchHoldersData(token: string) {
+  const data = await fetchTokens(token);
   return data.data;
 }
