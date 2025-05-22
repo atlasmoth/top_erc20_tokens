@@ -28,3 +28,28 @@ export async function fetchTokens(
     throw new Error("Invalid data format");
   return response.data;
 }
+
+export async function sendDirectCast(message: string) {
+  await axios.put(
+    "https://client.warpcast.com/v2/direct-cast-send",
+    {
+      conversationId: process.env.WARPCAST_GROUP_KEY,
+      recipientFids: [725, 2025, 18138],
+      messageId: crypto.randomUUID(),
+      type: "text",
+      message: message,
+    },
+    {
+      headers: {
+        accept: "*/*",
+        "accept-language": "en-US,en;q=0.9",
+        authorization: `Bearer ${process.env.WARPCAST_API_KEY}`,
+        "content-type": "application/json; charset=utf-8",
+        "idempotency-key": crypto.randomUUID(),
+        origin: "https://warpcast.com",
+        priority: "u=1, i",
+        referer: "https://warpcast.com/",
+      },
+    }
+  );
+}
