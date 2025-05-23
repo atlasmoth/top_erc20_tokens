@@ -2,9 +2,16 @@ import { NextRequest, NextResponse } from "next/server";
 import { sendDirectCast } from "./Api";
 
 export async function POST(request: NextRequest) {
-  const body = await request.json();
+  try {
+    const body = await request.json();
 
-  await sendDirectCast(body.message);
+    console.log({ body });
+
+    await sendDirectCast(body.message);
+  } catch (error) {
+    console.error(error);
+  }
+
   return NextResponse.json({
     success: true,
   });
