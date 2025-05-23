@@ -8,8 +8,18 @@ export async function POST(request: NextRequest) {
     console.log({ body });
 
     await sendDirectCast(body.message);
-  } catch (error) {
-    console.error(error);
+  } catch (error: any) {
+    if (error.response) {
+      console.error(
+        "Error message:",
+        error.response.data?.message || error.response.statusText
+      );
+      console.error("Status code:", error.response.status);
+    } else if (error.request) {
+      console.error("Network error:", error.message);
+    } else {
+      console.error("Error:", error.message);
+    }
   }
 
   return NextResponse.json({
